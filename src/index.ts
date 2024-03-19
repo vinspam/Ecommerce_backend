@@ -1,13 +1,12 @@
 import express, {Express,Request, Response} from "express";
 import { PORT } from "./secrets";
+import rootRouter from "./routes";
 
 
 const app:Express = express();
 app.use(express.json());
 
-app.get('/',(req:Request, res:Response) => {
-    res.send('/ Route is Working');
-});
+app.use('/api/v1', rootRouter);
 
 app.listen(PORT,()=>{
     console.log("app is Working");
