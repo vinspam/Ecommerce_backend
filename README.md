@@ -2,7 +2,7 @@
 
 This project is a backend implementation using Node.js, TypeScript, Express.js, Prisma ORM, and PostgreSQL. It provides a robust foundation for building RESTful APIs with authentication using JWT.
 
-## Features
+## Tech Stack
 
 - **TypeScript**: Enhances code quality and provides static typing.
 - **Express.js**: Minimal and flexible Node.js web application framework.
