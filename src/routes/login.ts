@@ -3,7 +3,7 @@
 
 
 import { Router } from 'express';
-import { login } from '../controllers/loginController';
+import { loginController } from '../controllers/loginController';
 const loginAuth:Router = Router();
 
-loginAuth.get('/login', login );
+loginAuth.get('/login', loginController );

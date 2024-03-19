@@ -1,5 +1,7 @@
+// Logic for what happens when user Logs In
+
 import { Request, Response } from "express";
 
-export const login = (req:Request, res:Response) => {
+export const loginController = (req:Request, res:Response) => {
     res.send('Login Route Working...');
 }

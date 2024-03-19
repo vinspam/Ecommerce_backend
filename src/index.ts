@@ -1,3 +1,5 @@
+// EXPRESS SERVER(MAIN)
+
 import express, {Express,Request, Response} from "express";
 import { PORT } from "./secrets";
 import rootRouter from "./routes";
