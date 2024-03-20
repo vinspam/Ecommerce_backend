@@ -66,5 +66,6 @@ export const login = async(req:Request, res:Response) => {
 
 export const me = async (req: Request, res: Response) => {
     
-    res.json(req.user);
+    const user = (req as any).user;
+    res.json(user);
 }
