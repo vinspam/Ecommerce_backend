@@ -1,12 +1,11 @@
-// Root Router 
-  // Will be defining all the routes here
-    // This routes will call the belonging controller Routes
 
 import { Router } from "express";
 import authRoutes from "./authRoutes";
+import productsRoutes from "./productsRoute";
 
 const rootRouter: Router =Router();
 
 rootRouter.use('/auth', authRoutes);
+rootRouter.use('/products', productsRoutes);
 
 export default rootRouter;
