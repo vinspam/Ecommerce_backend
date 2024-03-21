@@ -1,5 +1,5 @@
 import {Request, Response} from 'express';
-import  {PrismaClient}  from '@prisma/client';
+import {PrismaClient}  from '@prisma/client';
 
 const prisma = new PrismaClient();
 
@@ -14,4 +14,40 @@ export const createProduct = async (req: Request, res: Response)=>{
     })
 
     res.json(product);
-}
+};
+
+
+export const updateProduct = async (req: Request, res: Response)=>{
+    try {
+        const product = req.body;
+        if (product.tags) {
+            product.tags = product.tags.join(',');
+        }
+
+        const updateProduct = await prisma.product.update({
+            where: {
+                id: +req.params.id
+            },
+            data: product
+        })
+
+        res.json({updateProduct});
+
+    } catch (error) {
+        alert("Error updating product");
+        res.json({message:"Error updating product"});
+    }
+};
+
+
+export const deleteProduct = async (req: Request, res: Response)=>{
+    
+};
+
+export const listProduct= async (req: Request, res: Response)=>{
+    
+};
+
+export const getProductById = async (req: Request, res: Response)=>{
+    
+};

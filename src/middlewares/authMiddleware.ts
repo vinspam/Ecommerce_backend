@@ -20,7 +20,6 @@ export const authMiddleware = async (req:Request & { user?: User }, res:Response
         
     }
     req.user = user
-    res.json({user})
     next();
     } catch (error) {
         res.json({message:"Invalid Authorization"})
