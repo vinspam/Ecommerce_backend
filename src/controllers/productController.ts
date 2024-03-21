@@ -75,5 +75,17 @@ export const listProduct= async (req: Request, res: Response)=>{
 };
 
 export const getProductById = async (req: Request, res: Response)=>{
+
+    try {
+        const singleProduct = await prisma.product.findFirstOrThrow({
+            where:{
+                id: +req.params.id
+            }
+        });
+    
+        res.json(singleProduct);
+    } catch (error) {
+        res.status(error.status).json({ error: error.message});
+    }
     
 };
