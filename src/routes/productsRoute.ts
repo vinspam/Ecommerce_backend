@@ -9,6 +9,6 @@ productsRoutes.post('/create', [authMiddleware,adminMiddleware],createProduct);
 productsRoutes.put('/:id', [authMiddleware,adminMiddleware],updateProduct);
 productsRoutes.delete('/:id', [authMiddleware,adminMiddleware],deleteProduct);
 productsRoutes.get('/lists', [authMiddleware,adminMiddleware],listProduct);
-productsRoutes.post('/:id', [authMiddleware,adminMiddleware],getProductById);
+productsRoutes.get('/:id', [authMiddleware,adminMiddleware],getProductById);
 
 export default productsRoutes;
