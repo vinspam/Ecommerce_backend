@@ -41,6 +41,20 @@ export const updateProduct = async (req: Request, res: Response)=>{
 
 
 export const deleteProduct = async (req: Request, res: Response)=>{
+
+    try {
+        const deleteProduct = await prisma.product.delete({
+            where: {
+                id: +req.params.id
+            }
+        })
+        res.json({message:"Product deleted"});
+    } catch (error) {
+        alert("Error deleting product");
+        console.log("Error deleting product");
+    }
+
+   
     
 };
 
