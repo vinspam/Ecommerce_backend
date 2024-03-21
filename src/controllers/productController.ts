@@ -59,6 +59,18 @@ export const deleteProduct = async (req: Request, res: Response)=>{
 };
 
 export const listProduct= async (req: Request, res: Response)=>{
+
+    const count = await prisma.product.count();
+    const allProducts = await prisma.product.findMany({
+        skip: +req.params.skip || 0,  // skip means how much products should be displayed on one page 
+        take: 5 // so if skip is not specified then default 5 products will be displayed
+    
+    })
+
+    res.json({
+        count,
+        data: allProducts
+    });
     
 };
 
