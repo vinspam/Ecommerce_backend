@@ -5,7 +5,7 @@ import { addAddress, delteAddress, listAddress } from '../controllers/addressCon
 const addressRoute:Router = Router()
 
 addressRoute.post('/postAddress', authMiddleware, addAddress);
-addressRoute.delete('/login', authMiddleware, delteAddress);
-addressRoute.get('/me', authMiddleware, listAddress)
+addressRoute.delete('/:id', authMiddleware, delteAddress);
+addressRoute.get('/list', authMiddleware, listAddress)
 
 export default addressRoute
