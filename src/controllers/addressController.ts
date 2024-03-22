@@ -37,3 +37,9 @@ export const listAddress = async (req: any, res: Response)=>{
 
         res.json(addresses);
 };
+
+export const updateUser = async (req: any, res: Response)=>{
+
+
+}
+;
