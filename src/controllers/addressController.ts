@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
-import { AddressSchema } from "../schema/users";
+import { AddressSchema, updateUserSchema } from "../schema/users";
 import { prismaClient } from "..";
+import { Addresses } from "@prisma/client";
 
 export const addAddress = async (req:any, res: Response)=>{
         
@@ -40,6 +41,41 @@ export const listAddress = async (req: any, res: Response)=>{
 
 export const updateUser = async (req: any, res: Response)=>{
 
+    const validatedData = updateUserSchema.parse(req.body);
+    let shippingAddress : Addresses;
+    let billingAddress : Addresses;
 
-}
-;
+    if(validatedData.defaultShippingAddress){
+
+        try {
+            shippingAddress = await prismaClient.addresses.findFirstOrThrow({
+                where: {
+                    id: +validatedData.defaultShippingAddress
+                }
+            })
+        } catch (error) {
+                res.status(404).json({ message: "shippingAddress Not Found"});
+        }
+    }
+
+    if(validatedData.defaultBillingAddress){
+
+        try {
+            billingAddress = await prismaClient.addresses.findFirstOrThrow({
+                where: {
+                    id: +validatedData.defaultBillingAddress
+                }
+            })
+        } catch (error) {
+                res.status(404).json({ message: "billingAddress Not Found"});
+        }
+    }
+
+    const updatedUser = await prismaClient.user.update({
+        where: {
+            id: req.user.id
+        },
+        data: +validatedData
+    })
+        res.json(updateUser);
+};
